@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import StaticHTMLTemplate from './_TemplateStaticHTML'
+import { Container, Row, Col } from 'reactstrap'
 
 class TemplateComponent extends Component {
     render(){
         return(
-            <div className="generic-center"> 
-                <h1>This is a componentTemplate page</h1>
-                <h2>...</h2>
-                <StaticHTMLTemplate />
-            </div>
+            <Container className="generic-center">
+                <Row>   
+                    <Col>
+                        <h1>This is a componentTemplate page</h1>
+                    </Col> 
+                </Row>   
+            </Container>
         )
     }
 }

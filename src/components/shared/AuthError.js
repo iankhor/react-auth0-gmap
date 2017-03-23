@@ -1,16 +1,18 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 
-const StaticHTMLTemplate = (props) => {
+const AuthError = (props) => {
         return (
             <Container className="generic-center">
                 <Row>   
                     <Col>
-                        <h1>This is from StaticHTMLTemplate</h1>
+                        <h1>Login error, try logging in again !</h1>
+                        <p><NavLink to="/">Go Home</NavLink></p>
                     </Col> 
                 </Row>   
             </Container>
         )
 }
 
-export default StaticHTMLTemplate
+export default AuthError
