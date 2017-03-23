@@ -14,7 +14,7 @@ export default class AuthService {
         primaryColor: '#7FDBFF'
       },
       languageDictionary: {
-        title: "React + Auth0 + Rails API"
+        title: "React + Auth0 + GMaps"
       }
     })
     // Add callback for lock `authenticated` event

@@ -49,20 +49,30 @@ class GMap extends Component {
     }
 
     componentDidMount(){
-        // setInterval(() => {this.randomCoordinate( this.getRandomCoordinate() )},1000)
+        setInterval(() => {this.randomizeCoordinate( this.getRandomCoordinate() )},1000)
     }
 
     getRandomCoordinate =  () => {
         const index = Math.floor(Math.random() * (randomNumberConfig.end - randomNumberConfig.start + 1) + randomNumberConfig.start)
-        const lat = Math.floor(Math.random() * (coordinatesConfig.maxLat- coordinatesConfig.minLat + 1) + coordinatesConfig.minLat)
-        const lng = Math.floor(Math.random() * (coordinatesConfig.maxLng- coordinatesConfig.minLng + 1) + coordinatesConfig.minLng)
+        const lat = coordinatesConfig.mainLat + 
+                    Math.floor(Math.random() * (coordinatesConfig.maxLat- coordinatesConfig.minLat + 1) + coordinatesConfig.minLat) / 1000000
+        const lng = coordinatesConfig.mainLng + 
+                    Math.floor(Math.random() * (coordinatesConfig.maxLng- coordinatesConfig.minLng + 1) + coordinatesConfig.minLng) / 1000000
+        
         return { index, lat, lng }
     }
 
-    randomCoordinate = ( {index, lat, lng} ) => {
-        console.log('key', index )
-        console.log('lat', lat / 1000000 + coordinatesConfig.mainLat)
-        console.log('lng', lng / 1000000 + coordinatesConfig.mainLng)
+    randomizeCoordinate = ( {index, lat, lng} ) => {
+        // console.log('key', index )
+        // console.log('lat', lat.toFixed(6))
+        // console.log('lng', lng.toFixed(6))
+        // console.log('lat', this.state.coordinates[index].lat)
+        // console.log('lng', this.state.coordinates[index].lng)
+
+        let updatedCoordinates = [...this.state.coordinates]
+        updatedCoordinates[index].lat = lat.toFixed(6)
+        updatedCoordinates[index].lng = lng.toFixed(6)
+        this.setState( { coordinates: updatedCoordinates })
     }
 
     render(){
