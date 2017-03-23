@@ -1,12 +1,15 @@
 import React from 'react'
 
-//Routes
+//Common components
 import NotFound from './components/shared/NotFound'
-import App from './components/App';
+import AuthError from './components/shared/AuthError';
 import LoginTransition from './components/shared/LoginTransition';
+
+//Standalone components
+import App from './components/App';
 import Public from './components/Public';
 import Private from './components/Private';
-import AuthError from './components/shared/AuthError';
+import GMap from './components/GMap';
 
 //React-router 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
@@ -38,6 +41,7 @@ const Routes = (props) => {
         <Route path="/auth" exact component={LoginTransition} />  
         <Route path="/public" exact component={Public} />  
         <Route path="/auth/error" exact component={AuthError} />  
+        <PrivateRoute path="/gmap" exact component={GMap} />  
         <PrivateRoute path="/private" exact component={Private} />  
         <Route component={NotFound} />  
       </Switch>

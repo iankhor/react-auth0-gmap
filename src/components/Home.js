@@ -43,15 +43,10 @@ class Home extends Component {
                 <Row className="routes">
                     <Col>
                         <ul>
-                            <li>
-                                <NavLink to="/">Home</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/public">Public Route</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/private">Private Route</NavLink>
-                            </li>
+                            <li><NavLink to="/">Home</NavLink></li>
+                            <li><NavLink to="/public">Public Route</NavLink></li>
+                            <li><NavLink to="/private">Private Route</NavLink></li>
+                            <li><NavLink to="/gmap">Treasure Island</NavLink></li>
                         </ul>
                     </Col>
                 </Row>
