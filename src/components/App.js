@@ -20,7 +20,7 @@ class App extends Component {
             <Row>
               <Col>
                 <img src={logo} className="App-header App-logo" alt="logo" />
-                <h2>React + Auth0 + Bootstrap 4 Boilerplate</h2>
+                <h2>React + Auth0 + Google Maps</h2>
               </Col>
             </Row>
 
@@ -31,6 +31,11 @@ class App extends Component {
                     isLoggedIn={ this.state.isLoggedIn }
                     token={auth.getToken()}
                   />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                  {this.props.children}
               </Col>
             </Row>
         </Container>

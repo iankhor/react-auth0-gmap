@@ -4,6 +4,8 @@ import React from 'react'
 import NotFound from './components/shared/NotFound'
 import App from './components/App';
 import LoginTransition from './components/shared/LoginTransition';
+import Public from './components/Public';
+import Private from './components/Private';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
@@ -13,6 +15,8 @@ const Routes = (props) => {
       <Switch>
         <Route path="/" exact component={App} />  
         <Route path="/auth" exact component={LoginTransition} />  
+        <Route path="/public" exact component={Public} />  
+        <Route path="/private" exact component={Private} />  
         <Route component={NotFound} />  
       </Switch>
     </BrowserRouter>

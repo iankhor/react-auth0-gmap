@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+
 import JSONDebugger from '../utils/JSONDebugger'
 import { Container,
          Row,
@@ -32,11 +34,28 @@ class Home extends Component {
     render(){
         return(
             <Container>
-                <div className="buttons">
-                    <ButtonGroup vertical>
-                        { this.props.isLoggedIn ? this.renderLogOut() : this.renderSignInUp() }
-                    </ButtonGroup>
-                </div> 
+                <Row className="buttons">
+                    <Col>
+                        <ButtonGroup vertical>
+                            { this.props.isLoggedIn ? this.renderLogOut() : this.renderSignInUp() }
+                        </ButtonGroup>
+                    </Col>
+                </Row> 
+                <Row className="buttons">
+                    <Col>
+                        <ul>
+                            <li>
+                                <NavLink to="/">Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/public">Public Route</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/private">Private Route</NavLink>
+                            </li>
+                        </ul>
+                    </Col>
+                </Row>
                 { <JSONDebugger json={this.state} /> }
             </Container>
         )
