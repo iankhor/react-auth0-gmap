@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import JSONDebugger from '../utils/JSONDebugger'
 import { Container,
          Row,
          Col,
@@ -56,7 +55,6 @@ class Home extends Component {
                         </ul>
                     </Col>
                 </Row>
-                { <JSONDebugger json={this.state} /> }
             </Container>
         )
     }
