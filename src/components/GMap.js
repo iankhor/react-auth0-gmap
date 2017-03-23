@@ -5,13 +5,13 @@ import { NavLink } from 'react-router-dom'
 import Marker from './Marker'
 import JSONDebugger from './../utils/JSONDebugger'
 
-const coordinates = {
+const coordinatesConfig = {
     mainLat: -37.81,
-    minLat: -37.812357,
-    maxLat: -37.813456,
+    minLat: 2357,
+    maxLat: 3456,
     mainLng: 144.95,
-    minLng: 144.954377,
-    maxLng: 144.957009
+    minLng: 4377,
+    maxLng: 7009
 }
 
 const randomNumberConfig = {
@@ -19,12 +19,12 @@ const randomNumberConfig = {
     end: 10
 }
 
-const initCoordinates = [
+let initCoordinates = [
     {lat: -37.812357, lng: 144.954377, key: "1"},
     {lat: -37.812357, lng: 144.954377, key: "2"},
-    {lat: -37.812357, lng: 144.954377, key: "3"},
+    {lat: -37.812310, lng: 144.954287, key: "3"},
     {lat: -37.812357, lng: 144.954377, key: "4"},
-    {lat: -37.812357, lng: 144.954377, key: "5"},
+    {lat: -37.812347, lng: 144.954377, key: "5"},
     {lat: -37.812357, lng: 144.957009, key: "6"},
     {lat: -37.813456, lng: 144.957009, key: "7"},
     {lat: -37.813456, lng: 144.957009, key: "8"},
@@ -37,7 +37,8 @@ class GMap extends Component {
         super(props)
 
         this.state = {
-            randomNumber: 0
+            randomNumber: 0,
+            coordinates: initCoordinates
         }
         
     }
@@ -48,11 +49,20 @@ class GMap extends Component {
     }
 
     componentDidMount(){
-        // setInterval(() => {this.randomNumber()},1000)
+        // setInterval(() => {this.randomCoordinate( this.getRandomCoordinate() )},1000)
     }
 
-    randomNumber = () => {
-        this.setState( { randomNumber: Math.floor(randomNumberConfig.start + Math.random() * randomNumberConfig.end)   } )
+    getRandomCoordinate =  () => {
+        const index = Math.floor(Math.random() * (randomNumberConfig.end - randomNumberConfig.start + 1) + randomNumberConfig.start)
+        const lat = Math.floor(Math.random() * (coordinatesConfig.maxLat- coordinatesConfig.minLat + 1) + coordinatesConfig.minLat)
+        const lng = Math.floor(Math.random() * (coordinatesConfig.maxLng- coordinatesConfig.minLng + 1) + coordinatesConfig.minLng)
+        return { index, lat, lng }
+    }
+
+    randomCoordinate = ( {index, lat, lng} ) => {
+        console.log('key', index )
+        console.log('lat', lat / 1000000 + coordinatesConfig.mainLat)
+        console.log('lng', lng / 1000000 + coordinatesConfig.mainLng)
     }
 
     render(){
@@ -78,7 +88,7 @@ class GMap extends Component {
                     </GoogleMapReact>
                 </Row>
                 <p> Random Number : {this.state.randomNumber} </p>
-                {/*<JSONDebugger json={coordinates}/>*/}
+                {<JSONDebugger json={ {...this.state.coordinates} }/>}
             </Container>
         )
     }
