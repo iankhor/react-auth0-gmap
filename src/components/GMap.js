@@ -7,11 +7,11 @@ import JSONDebugger from './../utils/JSONDebugger'
 
 const coordinates = {
     mainLat: -37.81,
-    minLat: -37.812469,
-    maxLat: -37.814192,
+    minLat: -37.812357,
+    maxLat: -37.813456,
     mainLng: 144.95,
-    minLng: 144.954068,
-    maxLng: 144.957499
+    minLng: 144.954377,
+    maxLng: 144.957009
 }
 
 const randomNumberConfig = {
@@ -19,18 +19,18 @@ const randomNumberConfig = {
     end: 10
 }
 
-const initCoordinates = {
-    cood_1: {lat: -37.812469, lng: 144.954068},
-    cood_2: {lat: -37.812469, lng: 144.954068},
-    cood_3: {lat: -37.812469, lng: 144.954068},
-    cood_4: {lat: -37.812469, lng: 144.954068},
-    cood_5: {lat: -37.812469, lng: 144.954068},
-    cood_6: {lat: -37.812469, lng: 144.954068},
-    cood_7: {lat: -37.812469, lng: 144.954068},
-    cood_8: {lat: -37.812469, lng: 144.954068},
-    cood_9: {lat: -37.812469, lng: 144.954068},
-    cood_10: {lat: -37.812469, lng: 144.954068}
-}
+const initCoordinates = [
+    {lat: -37.812357, lng: 144.954377, key: "1"},
+    {lat: -37.812357, lng: 144.954377, key: "2"},
+    {lat: -37.812357, lng: 144.954377, key: "3"},
+    {lat: -37.812357, lng: 144.954377, key: "4"},
+    {lat: -37.812357, lng: 144.954377, key: "5"},
+    {lat: -37.812357, lng: 144.957009, key: "6"},
+    {lat: -37.813456, lng: 144.957009, key: "7"},
+    {lat: -37.813456, lng: 144.957009, key: "8"},
+    {lat: -37.813456, lng: 144.957009, key: "9"},
+    {lat: -37.813456, lng: 144.957009, key: "10"}
+]
 
 class GMap extends Component {
     constructor(props){
@@ -48,7 +48,7 @@ class GMap extends Component {
     }
 
     componentDidMount(){
-        setInterval(() => {this.randomNumber()},1000)
+        // setInterval(() => {this.randomNumber()},1000)
     }
 
     randomNumber = () => {
@@ -70,14 +70,15 @@ class GMap extends Component {
                         defaultZoom={this.props.zoom}
                     >
        
-                        <Marker lat={-37.812973} lng={144.955637} text={''} />
-                        <Marker lat={-37.812893} lng={144.956198} text={''} />
-                        <Marker lat={-37.812893} lng={144.956298} text={''} />
+                        { initCoordinates.map( coordinates => {
+                            return <Marker lat={coordinates.lat} lng={coordinates.lng} text={''} key={coordinates.key} /> 
+                            })
+                        }
 
                     </GoogleMapReact>
                 </Row>
                 <p> Random Number : {this.state.randomNumber} </p>
-                <JSONDebugger json={coordinates}/>
+                {/*<JSONDebugger json={coordinates}/>*/}
             </Container>
         )
     }
