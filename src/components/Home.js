@@ -41,7 +41,7 @@ class Home extends Component {
                         </ButtonGroup>
                     </Col>
                 </Row> 
-                <Row className="buttons">
+                <Row className="routes">
                     <Col>
                         <ul>
                             <li>
