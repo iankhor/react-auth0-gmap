@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import GoogleMapReact from 'google-map-react'
 import { NavLink } from 'react-router-dom'
-
+import Marker from './Marker'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class GMap extends Component {
 
   static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
-    zoom: 11
+    center: {lat: -37.812973, lng: 144.955637},
+    zoom: 18
   };
 
     render(){
@@ -28,11 +28,9 @@ class GMap extends Component {
                         defaultCenter={this.props.center}
                         defaultZoom={this.props.zoom}
                     >
-                        <AnyReactComponent
-                        lat={59.955413}
-                        lng={30.337844}
-                        text={'Kreyser Avrora'}
-                        />
+       
+                        <Marker lat={65.955413} lng={30.337844} text={'ASDASDAWSD'} />
+
                     </GoogleMapReact>
 
                 </Row>
