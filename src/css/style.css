@@ -32,7 +32,9 @@ h1 {
   padding: 4;
 }
 .gmap {
-  height: 50vh;
+  margin: 0 auto;
+  height: 500px;
+  width: 500px;
 }
 .generic-center {
   margin: auto;
