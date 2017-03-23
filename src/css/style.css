@@ -16,6 +16,9 @@ h1 {
 .color-fuchsia {
   background-color: #f012be;
 }
+.gmap {
+  height: 50vh;
+}
 .generic-center {
   margin: auto;
   padding: 2rem;
