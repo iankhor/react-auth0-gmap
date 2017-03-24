@@ -2,6 +2,7 @@ This boilerplate was bootstrapped with:
 * [create-react-app](https://github.com/facebookincubator/create-react-app) 
 * [Reactstrap (Bootstrap 4)](https://github.com/reactstrap/reactstrap)  
 * [react-router v4.0.0-beta.7](https://github.com/ReactTraining/react-router/releases)
+* [google-map-react](https://github.com/istarkov/google-map-react)
 
 An example of the boilerplate can be seen here at : [https://react-auth0-bootstrap4.herokuapp.com/](https://react-auth0-bootstrap4.herokuapp.com/)
 
