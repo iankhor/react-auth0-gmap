@@ -4,8 +4,6 @@ This boilerplate was bootstrapped with:
 * [react-router v4.0.0-beta.7](https://github.com/ReactTraining/react-router/releases)
 * [google-map-react](https://github.com/istarkov/google-map-react)
 
-An example of the boilerplate can be seen here at : [https://react-auth0-bootstrap4.herokuapp.com/](https://react-auth0-bootstrap4.herokuapp.com/)
-
 ### Instructions
 1. Git clone repository into your local directory
 2. Run ```npm i``` in your local directory
