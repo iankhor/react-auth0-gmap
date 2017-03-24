@@ -49,12 +49,12 @@ class GMap extends Component {
     }
 
     componentDidMount(){
-        setInterval(() => {this.randomizeCoordinate( this.getRandomCoordinate() )},1000)
+        setInterval(() => {this.randomizeCoordinate( this.getRandomCoordinate() )},400)
     }
 
     getRandomCoordinate =  () => {
         const index = Math.floor(Math.random() * (randomNumberConfig.end - randomNumberConfig.start + 1) + randomNumberConfig.start)
-        const lat = coordinatesConfig.mainLat + 
+        const lat = coordinatesConfig.mainLat - 
                     Math.floor(Math.random() * (coordinatesConfig.maxLat- coordinatesConfig.minLat + 1) + coordinatesConfig.minLat) / 1000000
         const lng = coordinatesConfig.mainLng + 
                     Math.floor(Math.random() * (coordinatesConfig.maxLng- coordinatesConfig.minLng + 1) + coordinatesConfig.minLng) / 1000000
@@ -70,8 +70,8 @@ class GMap extends Component {
         // console.log('lng', this.state.coordinates[index].lng)
 
         let updatedCoordinates = [...this.state.coordinates]
-        updatedCoordinates[index].lat = lat.toFixed(6)
-        updatedCoordinates[index].lng = lng.toFixed(6)
+        updatedCoordinates[index -1].lat = lat.toFixed(6)
+        updatedCoordinates[index -1].lng = lng.toFixed(6)
         this.setState( { coordinates: updatedCoordinates })
     }
 
@@ -97,7 +97,6 @@ class GMap extends Component {
 
                     </GoogleMapReact>
                 </Row>
-                <p> Random Number : {this.state.randomNumber} </p>
                 {<JSONDebugger json={ {...this.state.coordinates} }/>}
             </Container>
         )
