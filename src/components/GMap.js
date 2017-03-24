@@ -4,43 +4,12 @@ import GoogleMapReact from 'google-map-react'
 import { NavLink } from 'react-router-dom'
 import Marker from './Marker'
 import JSONDebugger from './../utils/JSONDebugger'
-
-const coordinatesConfig = {
-    mainLat: -37.81,
-    minLat: 2357,
-    maxLat: 3456,
-    mainLng: 144.95,
-    minLng: 4377,
-    maxLng: 7009
-}
-
-const randomNumberConfig = {
-    start: 1,
-    end: 10
-}
-
-let initCoordinates = [
-    {lat: -37.812357, lng: 144.954377, key: "1"},
-    {lat: -37.812357, lng: 144.954377, key: "2"},
-    {lat: -37.812310, lng: 144.954287, key: "3"},
-    {lat: -37.812357, lng: 144.954377, key: "4"},
-    {lat: -37.812347, lng: 144.954377, key: "5"},
-    {lat: -37.812357, lng: 144.957009, key: "6"},
-    {lat: -37.813456, lng: 144.957009, key: "7"},
-    {lat: -37.813456, lng: 144.957009, key: "8"},
-    {lat: -37.813456, lng: 144.957009, key: "9"},
-    {lat: -37.813456, lng: 144.957009, key: "10"}
-]
+import { getRandomCoordinate, initCoordinates } from './../utils/MarkerRandomizer'
 
 class GMap extends Component {
     constructor(props){
         super(props)
-
-        this.state = {
-            randomNumber: 0,
-            coordinates: initCoordinates
-        }
-        
+        this.state = { coordinates: initCoordinates  }
     }
 
     static defaultProps = {
@@ -49,26 +18,10 @@ class GMap extends Component {
     }
 
     componentDidMount(){
-        setInterval(() => {this.randomizeCoordinate( this.getRandomCoordinate() )},400)
-    }
-
-    getRandomCoordinate =  () => {
-        const index = Math.floor(Math.random() * (randomNumberConfig.end - randomNumberConfig.start + 1) + randomNumberConfig.start)
-        const lat = coordinatesConfig.mainLat - 
-                    Math.floor(Math.random() * (coordinatesConfig.maxLat- coordinatesConfig.minLat + 1) + coordinatesConfig.minLat) / 1000000
-        const lng = coordinatesConfig.mainLng + 
-                    Math.floor(Math.random() * (coordinatesConfig.maxLng- coordinatesConfig.minLng + 1) + coordinatesConfig.minLng) / 1000000
-        
-        return { index, lat, lng }
+        setInterval(() => {this.randomizeCoordinate( getRandomCoordinate() )}, 400)
     }
 
     randomizeCoordinate = ( {index, lat, lng} ) => {
-        // console.log('key', index )
-        // console.log('lat', lat.toFixed(6))
-        // console.log('lng', lng.toFixed(6))
-        // console.log('lat', this.state.coordinates[index].lat)
-        // console.log('lng', this.state.coordinates[index].lng)
-
         let updatedCoordinates = [...this.state.coordinates]
         updatedCoordinates[index -1].lat = lat.toFixed(6)
         updatedCoordinates[index -1].lng = lng.toFixed(6)
